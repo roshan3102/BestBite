@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 // SQLite Database Setup
 const db = new sqlite3.Database('./best_bites.db');
-/*
+
 // Modify the CREATE TABLE statement
 db.run(`
   CREATE TABLE IF NOT EXISTS FoodItems (
@@ -20,24 +20,23 @@ db.run(`
     price REAL NOT NULL,
     taste REAL NOT NULL,
     filling REAL NOT NULL,
-    rating REAL NOT NULL
-  )
-`);
-*/
+    rating REAL NOT NULL,
+  );`);
+
 // Example INSERT statement with rating calculation
 const exampleFoodItem = {
   name: 'Chicken Parmigiana',
   restaurant: 'Mamamia',
   price: 15,
-  Taste: 9,
-  filling: 8,
+  taste: 9,
+  filling: 8
 };
 
 // Insert the example food item into the FoodItems table with automatic rating calculation
 db.run(`
-  INSERT INTO FoodItems (name, restaurant, price, Taste, filling, rating)
-  VALUES (?, ?, ?, ?, ?, (Taste * filling) / price)
-`, [exampleFoodItem.name, exampleFoodItem.restaurant, exampleFoodItem.price, exampleFoodItem.Taste, exampleFoodItem.filling],
+  INSERT INTO FoodItems (name, restaurant, price, taste, filling, rating);
+  VALUES (?, ?, ?, ?, ?, (filling*taste) / price);
+`, [exampleFoodItem.name, exampleFoodItem.restaurant, exampleFoodItem.price, exampleFoodItem.taste, exampleFoodItem.filling],
 function (err) {
   if (err) {
     console.error(err.message);
