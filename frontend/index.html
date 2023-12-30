@@ -14,6 +14,18 @@
 
         <!-- Display search results here -->
         <div id="results"></div>
+
+        <!-- Form for taste and filling ratings -->
+        <form id="ratingsForm">
+            <label for="tasteRating">Taste Rating (0-10):</label>
+            <input type="number" id="tasteRating" name="tasteRating" min="0" max="10">
+
+            <label for="fillingRating">Filling Rating (0-10):</label>
+            <input type="number" id="fillingRating" name="fillingRating" min="0" max="10">
+
+            <!-- Button to submit ratings -->
+            <button type="button" onclick="submitRatings()">Submit Ratings</button>
+        </form>
     </div>
 
     <script src="app.js"></script>
